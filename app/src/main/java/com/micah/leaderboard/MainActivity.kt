@@ -1,7 +1,8 @@
-package com.micah.myapplication
+package com.micah.leaderboard
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.micah.leaderboard.R
 
 class MainActivity : AppCompatActivity() {
 
