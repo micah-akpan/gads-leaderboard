@@ -9,7 +9,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
-import com.micah.leaderboard.R
+import com.micah.leaderboard.adapters.TabLayoutAdapter
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -33,10 +33,14 @@ class TabbedCollectionFragment: Fragment() {
         viewPager = view.findViewById(R.id.pager)
         viewPager.adapter = tabLayoutAdapter
 
+        setTabTitles(view)
+
+    }
+
+    fun setTabTitles(view: View) {
         val tabLayout = view.findViewById<TabLayout>(R.id.tab_layout)
         TabLayoutMediator(tabLayout, viewPager) { tab, position ->
             tab.text = if (position == 0) "Learning Leaders" else "Skill IQ Leaders"
         }.attach()
-
     }
 }

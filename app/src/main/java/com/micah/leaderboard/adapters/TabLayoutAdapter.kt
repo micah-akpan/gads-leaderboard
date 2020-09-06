@@ -1,8 +1,9 @@
-package com.micah.leaderboard
+package com.micah.leaderboard.adapters
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.micah.leaderboard.LearningLeadersFragment
 
 private const val ARG_OBJECT = "object"
 
