@@ -9,9 +9,11 @@ import com.micah.leaderboard.R
 import com.micah.leaderboard.models.Leader
 import com.micah.leaderboard.utils.FakeData
 
-private val TAG = "LeaderInfoAdapter"
 
-class LeaderInfoAdapter(val leaders: ArrayList<Leader>) : RecyclerView.Adapter<LeaderInfoAdapter.ViewHolder>() {
+
+class LeaderInfoAdapter : RecyclerView.Adapter<LeaderInfoAdapter.ViewHolder>() {
+    var TAG: String = LeaderInfoAdapter::class.java.name
+    lateinit var mLeaders: ArrayList<Leader>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
@@ -19,12 +21,10 @@ class LeaderInfoAdapter(val leaders: ArrayList<Leader>) : RecyclerView.Adapter<L
         return ViewHolder(view)
     }
 
-    override fun getItemCount(): Int {
-       return FakeData.getFakeLeaders().size
-    }
+    override fun getItemCount(): Int = mLeaders.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val leader: Leader = leaders.get(position)
+        val leader: Leader = mLeaders[position]
         holder.apply {
             leaderName.text = leader.name
             leaderHourLocation.text = leader.hours.toString() + " learning hours, " + leader.location
@@ -32,7 +32,12 @@ class LeaderInfoAdapter(val leaders: ArrayList<Leader>) : RecyclerView.Adapter<L
         }
     }
 
-    class ViewHolder : RecyclerView.ViewHolder, View.OnClickListener {
+    fun setLeaders(leaders: ArrayList<Leader>) {
+        mLeaders = leaders
+        notifyDataSetChanged()
+    }
+
+    inner class ViewHolder : RecyclerView.ViewHolder, View.OnClickListener {
         var leaderImage: ImageView
         var leaderName: TextView
         var leaderHourLocation: TextView
@@ -46,7 +51,7 @@ class LeaderInfoAdapter(val leaders: ArrayList<Leader>) : RecyclerView.Adapter<L
         }
 
         override fun onClick(v: View?) {
-            Log.d(TAG, "Clicked the view holder housing the view")
+            Log.d(TAG, "Clicked the view holder housing the view ")
         }
     }
 }

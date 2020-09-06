@@ -3,6 +3,7 @@ package com.micah.leaderboard.utils
 import com.micah.leaderboard.models.Leader
 import retrofit2.Call
 import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
 interface LearningLeaderService {
@@ -14,6 +15,7 @@ interface LearningLeaderService {
         fun create(): LearningLeaderService {
             val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(baseAPIUrl)
+                .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
             val leaderService: LearningLeaderService =
