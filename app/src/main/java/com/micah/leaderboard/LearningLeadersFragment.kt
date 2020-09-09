@@ -17,7 +17,7 @@ import com.micah.leaderboard.utils.TaskDelegate
 
 class LearningLeadersFragment : Fragment(), TaskDelegate {
 
-    private val mLeaderInfoAdapter = LeaderInfoAdapter()
+    private val mLeaderInfoAdapter = LeaderInfoAdapter(this)
     private lateinit var mRecyclerView: RecyclerView
     private var mLearningLeaderAsyncTask = LearningLeaderAsyncTask(this)
     private val mLeaders: ArrayList<Leader> = ArrayList()

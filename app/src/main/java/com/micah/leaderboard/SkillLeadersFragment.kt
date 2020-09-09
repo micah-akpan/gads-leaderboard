@@ -15,12 +15,17 @@ import com.micah.leaderboard.utils.TaskDelegate
 class SkillLeadersFragment : Fragment(), TaskDelegate {
 
     private var mLearningLeaderAsyncTask = SkillLeaderAsyncTask(this)
-    private val mSkillLeaderAdapter = SkillIQAdapter()
+    private val mSkillLeaderAdapter = SkillIQAdapter(this)
     private lateinit var mRecyclerView: RecyclerView
     private val mLeaders: ArrayList<Leader> = ArrayList()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        mLearningLeaderAsyncTask.cancel(true)
     }
 
     override fun onCreateView(

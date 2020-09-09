@@ -6,11 +6,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.micah.leaderboard.R
 import com.micah.leaderboard.models.Leader
 
-class SkillIQAdapter: RecyclerView.Adapter<SkillIQAdapter.ViewHolder>() {
+class SkillIQAdapter(private val context: Fragment): RecyclerView.Adapter<SkillIQAdapter.ViewHolder>() {
     var TAG: String = this::class.java.name
     lateinit var mLeaders: ArrayList<Leader>
 
@@ -26,7 +27,7 @@ class SkillIQAdapter: RecyclerView.Adapter<SkillIQAdapter.ViewHolder>() {
         val leader: Leader = mLeaders[position]
         holder.apply {
             leaderName.text = leader.name
-            leaderSkillLocation.text = leader.skillIQ.toString() + " Skill IQ Score " + if(leader.location != null) { ", " + leader.location} else {""}
+            leaderSkillLocation.text = context.getString(R.string.lb_skill_location_note, leader.skillIQ, leader.location)
             leaderImage.setImageResource(R.drawable.skill_iq_badge)
         }
     }

@@ -1,15 +1,17 @@
+import android.content.Context
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.RecyclerView
 import com.micah.leaderboard.R
 import com.micah.leaderboard.models.Leader
 
 
-class LeaderInfoAdapter : RecyclerView.Adapter<LeaderInfoAdapter.ViewHolder>() {
+class LeaderInfoAdapter(private val context: Fragment) : RecyclerView.Adapter<LeaderInfoAdapter.ViewHolder>() {
     var TAG: String = LeaderInfoAdapter::class.java.name
     lateinit var mLeaders: ArrayList<Leader>
 
@@ -25,7 +27,7 @@ class LeaderInfoAdapter : RecyclerView.Adapter<LeaderInfoAdapter.ViewHolder>() {
         val leader: Leader = mLeaders[position]
         holder.apply {
             leaderName.text = leader.name
-            leaderHourLocation.text = leader.hours.toString() + " learning hours, " + leader.location
+            leaderHourLocation.text = context.getString(R.string.lb_hours_location_note, leader.hours, leader.location)
             leaderImage.setImageResource(R.drawable.top_learner_badge)
         }
     }
