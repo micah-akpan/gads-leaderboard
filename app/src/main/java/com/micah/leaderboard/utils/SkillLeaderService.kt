@@ -6,20 +6,20 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 
-interface LearningLeaderService {
-    @GET("/api/hours")
-    fun getLearningLeadersByHours(): Call<List<Leader>>
+interface SkillLeaderService {
+    @GET("/api/skilliq")
+    fun getLearningLeadersBySkillIQ(): Call<List<Leader>>
 
     companion object {
         var baseAPIUrl = "https://gadsapi.herokuapp.com";
-        fun create(): LearningLeaderService {
+        fun create(): SkillLeaderService {
             val retrofit: Retrofit = Retrofit.Builder()
                 .baseUrl(baseAPIUrl)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
 
-            val leaderService: LearningLeaderService =
-                retrofit.create(LearningLeaderService::class.java)
+            val leaderService: SkillLeaderService =
+                retrofit.create(SkillLeaderService::class.java)
             return leaderService
         }
     }

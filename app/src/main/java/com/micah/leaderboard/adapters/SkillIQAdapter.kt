@@ -1,3 +1,5 @@
+package com.micah.leaderboard.adapters
+
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
@@ -8,14 +10,13 @@ import androidx.recyclerview.widget.RecyclerView
 import com.micah.leaderboard.R
 import com.micah.leaderboard.models.Leader
 
-
-class LeaderInfoAdapter : RecyclerView.Adapter<LeaderInfoAdapter.ViewHolder>() {
-    var TAG: String = LeaderInfoAdapter::class.java.name
+class SkillIQAdapter: RecyclerView.Adapter<SkillIQAdapter.ViewHolder>() {
+    var TAG: String = this::class.java.name
     lateinit var mLeaders: ArrayList<Leader>
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.leaderboard_item, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.leaderboard_skill_item, parent, false)
         return ViewHolder(view)
     }
 
@@ -25,8 +26,8 @@ class LeaderInfoAdapter : RecyclerView.Adapter<LeaderInfoAdapter.ViewHolder>() {
         val leader: Leader = mLeaders[position]
         holder.apply {
             leaderName.text = leader.name
-            leaderHourLocation.text = leader.hours.toString() + " learning hours, " + leader.location
-            leaderImage.setImageResource(R.drawable.top_learner_badge)
+            leaderSkillLocation.text = leader.skillIQ.toString() + " Skill IQ Score " + if(leader.location != null) { ", " + leader.location} else {""}
+            leaderImage.setImageResource(R.drawable.skill_iq_badge)
         }
     }
 
@@ -35,16 +36,12 @@ class LeaderInfoAdapter : RecyclerView.Adapter<LeaderInfoAdapter.ViewHolder>() {
         notifyDataSetChanged()
     }
 
-    inner class ViewHolder : RecyclerView.ViewHolder, View.OnClickListener {
-        var leaderImage: ImageView
-        var leaderName: TextView
-        var leaderHourLocation: TextView
+    inner class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView), View.OnClickListener {
+        var leaderImage: ImageView = itemView.findViewById(R.id.lb_leader_badge)
+        var leaderName: TextView = itemView.findViewById(R.id.lb_leader_name)
+        var leaderSkillLocation: TextView = itemView.findViewById(R.id.lb_leader_skill_location)
 
-        constructor(itemView: View): super(itemView) {
-            leaderImage = itemView.findViewById(R.id.imageView)
-            leaderName = itemView.findViewById(R.id.lb_item_leader_name)
-            leaderHourLocation = itemView.findViewById(R.id.lb_leader_hours_location)
-
+        init {
             itemView.setOnClickListener(this)
         }
 
