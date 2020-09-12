@@ -8,7 +8,7 @@
     android:background="#000000">
 
     <TextView
-        android:id="@+id/textView"
+        android:id="@+id/lb_project_submission_pg_title"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="72dp"
@@ -22,7 +22,7 @@
         android:textSize="24dp" />
 
     <EditText
-        android:id="@+id/editTextTextFirstName"
+        android:id="@+id/lb_form_first_name"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginStart="16dp"
@@ -32,15 +32,15 @@
         android:ems="10"
         android:hint="First Name"
         android:inputType="textPersonName"
-        app:layout_constraintEnd_toStartOf="@+id/editTextTextLastName"
+        app:layout_constraintEnd_toStartOf="@+id/lb_form_last_name"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/lb_project_submission_pg_title"
         android:background="@drawable/edit_text_border"
         android:padding="5dp"
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/editTextTextLastName"
+        android:id="@+id/lb_form_last_name"
         android:layout_width="180dp"
         android:layout_height="40dp"
         android:layout_marginStart="8dp"
@@ -49,8 +49,8 @@
         android:hint="Last Name"
         android:inputType="textPersonName"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/editTextTextFirstName"
-        app:layout_constraintTop_toTopOf="@+id/editTextTextFirstName"
+        app:layout_constraintStart_toEndOf="@+id/lb_form_first_name"
+        app:layout_constraintTop_toTopOf="@+id/lb_form_first_name"
         android:background="@drawable/edit_text_border"
         android:textSize="@dimen/lb_submit_form_text_size"
         android:padding="5dp"
@@ -58,46 +58,46 @@
         />
 
     <EditText
-        android:id="@+id/editTextEmail"
+        android:id="@+id/lb_form_email"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="Email Address"
-        android:inputType="textPersonName"
+        android:inputType="textEmailAddress"
         android:padding="5dp"
         android:textSize="@dimen/lb_submit_form_text_size"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextLastName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextFirstName"
+        app:layout_constraintEnd_toEndOf="@+id/lb_form_last_name"
+        app:layout_constraintStart_toStartOf="@+id/lb_form_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/lb_form_first_name"
         android:textStyle="bold"/>
 
     <EditText
-        android:id="@+id/editTextProjectlink"
+        android:id="@+id/lb_form_project_link"
         android:layout_width="0dp"
         android:layout_height="40dp"
         android:layout_marginTop="48dp"
         android:background="@drawable/edit_text_border"
         android:ems="10"
         android:hint="Project on GITHUB (link)"
-        android:inputType="textPersonName"
+        android:inputType="textUri"
         android:padding="5dp"
         android:textSize="@dimen/lb_submit_form_text_size"
-        app:layout_constraintEnd_toEndOf="@+id/editTextTextLastName"
-        app:layout_constraintStart_toStartOf="@+id/editTextTextFirstName"
-        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+        app:layout_constraintEnd_toEndOf="@+id/lb_form_last_name"
+        app:layout_constraintStart_toStartOf="@+id/lb_form_first_name"
+        app:layout_constraintTop_toBottomOf="@+id/lb_form_email"
         android:textStyle="bold"/>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/lb_form_submit_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="64dp"
         android:text="Submit"
-        app:layout_constraintEnd_toEndOf="@+id/editTextProjectlink"
-        app:layout_constraintStart_toStartOf="@+id/editTextProjectlink"
-        app:layout_constraintTop_toBottomOf="@+id/editTextProjectlink"
+        app:layout_constraintEnd_toEndOf="@+id/lb_form_project_link"
+        app:layout_constraintStart_toStartOf="@+id/lb_form_project_link"
+        app:layout_constraintTop_toBottomOf="@+id/lb_form_project_link"
         android:textAllCaps="false" />
 
 
