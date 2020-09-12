@@ -17,29 +17,12 @@ class SubmissionDialogFragment : DialogFragment() {
 
     val TAG = this::class.simpleName
 
-    override fun onStart() {
-//        val iView = activity?.findViewById<ImageView>(R.id.imageView2)
-        super.onStart()
-//        val iView = view.findViewById<ImageView>(R.id.imageView2)
-    }
-
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         return activity?.let {
             val builder = AlertDialog.Builder(it)
-            val inflater = requireActivity().layoutInflater;
+            val inflater = it.layoutInflater;
 
             val view = inflater.inflate(R.layout.proj_submissn_dialog_content, null)
-//            val imageView = view.findViewById<ImageView>(R.id.imageView2)
-
-//            view.findViewById<ImageView>(R.id.iv_close_button).setOnClickListener {
-//                Log.d(TAG, "Image view clicked...")
-//            }
-//
-//            view.findViewById<Button>(R.id.yesButton).setOnClickListener {
-//                Log.d(TAG, "yes button view clicked...")
-//            }
-
-            builder.setView(inflater.inflate(R.layout.proj_submissn_dialog_content, null))
 
             view.findViewById<ImageView>(R.id.iv_close_button).setOnClickListener {
                 Log.d(TAG, "Image view clicked...")
@@ -48,6 +31,8 @@ class SubmissionDialogFragment : DialogFragment() {
             view.findViewById<Button>(R.id.yesButton).setOnClickListener {
                 Log.d(TAG, "yes button view clicked...")
             }
+
+            builder.setView(view)
 
             builder.create()
         } ?: throw IllegalStateException("Activity cannot be null")
